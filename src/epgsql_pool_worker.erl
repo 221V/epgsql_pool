@@ -107,7 +107,7 @@ handle_info(open_connection, #state{pool_name = PoolName, connection = Connectio
             {noreply, State#state{connection = Connection4}}
     end;
 
-handle_info(on_connect, #state{pool_name = PoolName, connection = Connection} = State) ->
+handle_info(on_connect, #state{pool_name = PoolName, connection = _Connection} = State) ->
     case application:get_env(epgsql_pool, connect_listener) of
         undefined -> ignore;
         {ok, undefined} -> ignore;
